@@ -11,10 +11,14 @@
 				<el-input v-model.trim="form.realname" class="h-40 w-200"></el-input>
 			</el-form-item>
 			<el-form-item label="所属组织架构" prop="structure_id">
-				<el-select v-model="form.structure_id" placeholder="请选择组织架构" class="w-200">
-					<el-option v-for="item in orgsOptions" :label="item.title" :value="item.id"></el-option>
+				<el-select v-model="form.structureId" placeholder="请选择组织架构" class="w-200">
+					<el-option v-for="item  in orgsOptions" 
+          :label="item.title" 
+          :value="item.id">
+          </el-option>
 				</el-select>
 			</el-form-item>
+      <span>Selected: {{ form.structureId }}</span>
 			<el-form-item label="备注">
 				<el-input v-model.trim="form.remark" class="h-40 w-200"></el-input>
 			</el-form-item>
@@ -139,6 +143,7 @@
         this.apiGet('admin/structures').then((res) => {
           this.handelResponse(res, (data) => {
             this.orgsOptions = data
+            console.info('----getAllOrgs:' + _g.j2s(data))
           })
         })
       },
@@ -148,9 +153,10 @@
         this.apiGet('admin/users/edit/' + this.id).then((res) => {
           console.log('res = ', _g.j2s(res))
           this.handelResponse(res, (data) => {
+            this.form.id = data.id
             this.form.username = data.username
             this.form.realname = data.realname
-            this.form.structure_id = data.structure_id
+            this.form.structureId = data.structureId
             this.form.remark = data.remark
             _(data.groups).forEach((res1) => {
               _(this.groupOptions).forEach((res2) => {
