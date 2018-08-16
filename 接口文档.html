@@ -1,0 +1,913 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF8">
+    <title></title>
+    <style type="text/css">
+        #container {
+            margin: 8px;
+        }
+
+        .param-table {
+            background: #E6E6E6;
+            border: 1px solid #FFF;
+            margin: 12px 0;
+            border-collapse: collapse;
+        }
+
+        .param-table th {
+            background: gray;
+            color: #FFF;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #FFF;
+            padding: 5px;
+        }
+
+        .param-table td {
+            border-collapse: collapse;
+            border: 1px solid #FFF;
+            font-size: 12px;
+            padding: 5px;
+        }
+
+        .param-table .th-name {
+            min-width: 140px;
+        }
+
+        .param-table .th-identifier {
+            min-width: 140px;
+        }
+
+        .param-table .th-type {
+            min-width: 100px;
+        }
+
+        .param-table .th-remark {
+            min-width: 200px;
+        }
+
+        .param-table .td-name {}
+
+        .param-table .td-identifier {}
+
+        .param-table .td-type   { color: #990000; }
+
+        .param-table .td-remark { color: #666; }
+
+        .param-table .tr-level-1 { background: #F5F5F5; }
+        .param-table .tr-level-1 .td-identifier { padding-left: 5px; }
+
+        .param-table .tr-level-2 { background: #E6E6E6; }
+        .param-table .tr-level-2 .td-identifier { padding-left: 15px; }
+
+        .param-table .tr-level-3 { background: #CCCCCC; }
+        .param-table .tr-level-3 .td-identifier { padding-left: 25px; }
+
+        .param-table .tr-level-4 { background: #E6E6E6; }
+        .param-table .tr-level-4 .td-identifier { padding-left: 35px; }
+
+        .param-table .tr-level-5 { background: #CCCCCC; }
+        .param-table .tr-level-5 .td-identifier { padding-left: 45px; }
+
+        .param-table .tr-level-6 { background: #E6E6E6; }
+        .param-table .tr-level-6 .td-identifier { padding-left: 55px; }
+
+        .param-table .tr-level-7 { background: #CCCCCC; }
+        .param-table .tr-level-7 .td-identifier { padding-left: 65px; }
+
+        .param-table .tr-level-8 { background: #E6E6E6; }
+        .param-table .tr-level-8 .td-identifier { padding-left: 75px; }
+
+        .param-table .tr-level-9 { background: #CCCCCC; }
+        .param-table .tr-level-9 .td-identifier { padding-left: 85px; }
+
+        .param-table .tr-level-10 { background: #E6E6E6; }
+        .param-table .tr-level-10 .td-identifier { padding-left: 95px; }
+
+        .param-table .tr-level-11 {
+            background: #CCCCCC;
+        }
+        .param-table .tr-level-11 .td-identifier { padding-left: 105px; }
+
+        .param-table .tr-level-12 {
+            background: #E6E6E6;
+        }
+        .param-table .tr-level-12 .td-identifier { padding-left: 115px; }
+
+        .param-table .tr-level-13 {
+            background: #CCCCCC;
+        }
+        .param-table .tr-level-13 .td-identifier { padding-left: 125px; }
+    </style>
+</head>
+<body>
+<div id="container">
+            <div class="module">
+            <h1>1&nbsp;权限模块</h1>
+                            <div class="page">
+                    <h2>1.1&nbsp;规则管理</h2>
+                                            <div class="action">
+                            <h3>1.1.1&nbsp;【规则】列表</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/rules</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">关键字搜素</td><td class="td-identifier">keywords</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态码</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark">200正确，400错误</td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回列表</td><td class="td-identifier">data</td><td class="td-type">array&lt;object&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---主键</td><td class="td-identifier">id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---显示名</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级名称</td><td class="td-identifier">p_title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---规则定义</td><td class="td-identifier">name</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---状态1启用，0启用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---原来名称</td><td class="td-identifier">else</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---级别</td><td class="td-identifier">level</td><td class="td-type">number</td><td class="td-remark">1模块,2控制器,3操作</td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.1.2&nbsp;【规则】提交</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/rules</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">显示名</td><td class="td-identifier">title</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">上级id。默认0</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">级别类型</td><td class="td-identifier">level</td><td class="td-type">number</td><td class="td-remark">级别。1模块,2控制器,3操作</td></tr><tr class="tr-level-1"><td class="td-name">规则定义</td><td class="td-identifier">name</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.1.3&nbsp;【规则】详情</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/rules/:id</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态码200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回数据</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---主键</td><td class="td-identifier">id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---级别</td><td class="td-identifier">level</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---规则定义</td><td class="td-identifier">name</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---规则名称</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.1.4&nbsp;【规则】删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/rules/:id</div>
+
+                            <h3>Method</h3>
+                            <div>DELETE</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态码。200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.1.5&nbsp;【规则】编辑</h3>
+
+                            <h3>URL</h3>
+                            <div>adminApi/rules/:id</div>
+
+                            <h3>Method</h3>
+                            <div>PUT</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态（1启用，0禁用）</td><td class="td-identifier">status</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">显示名</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">规则定义</td><td class="td-identifier">name</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">规则类型</td><td class="td-identifier">type</td><td class="td-type">string</td><td class="td-remark">可选，级别。1模块,2控制器,3操作</td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态码，200正确。400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.1.6&nbsp;【规则】批量删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/rules/deletes</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">需要删除的id</td><td class="td-identifier">ids</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.1.7&nbsp;【规则】批量启用/禁用</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/rules/enables</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">需要的id</td><td class="td-identifier">ids</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                    </div>
+                            <div class="page">
+                    <h2>1.2&nbsp;用户组管理</h2>
+                                            <div class="action">
+                            <h3>1.2.1&nbsp;【用户组】详情</h3>
+
+                            <h3>URL</h3>
+                            <div>adminApi/groups/:id</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态码，200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---备注</td><td class="td-identifier">remark</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---规则</td><td class="td-identifier">rules</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---主键</td><td class="td-identifier">group_id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---标题</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.2.2&nbsp;【用户组】列表</h3>
+
+                            <h3>URL</h3>
+                            <div>adminApi/groups</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态码200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">array&lt;object&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级组别名称</td><td class="td-identifier">p_title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级组别id</td><td class="td-identifier">pid</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---原来名称</td><td class="td-identifier">else</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---级别</td><td class="td-identifier">level</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---备注</td><td class="td-identifier">remark</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---状态，1启用，0删除</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---主键</td><td class="td-identifier">id</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---包含规则</td><td class="td-identifier">rules</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---名称</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.2.3&nbsp;【用户组】删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/groups/:id</div>
+
+                            <h3>Method</h3>
+                            <div>DELETE</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">状态码200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.2.4&nbsp;【用户组】提交</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/groups</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark">没有则为0</td></tr><tr class="tr-level-1"><td class="td-name">规则组</td><td class="td-identifier">rules</td><td class="td-type">string</td><td class="td-remark">用逗号隔开</td></tr><tr class="tr-level-1"><td class="td-name">备注</td><td class="td-identifier">remark</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">名称</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">状态码，200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.2.5&nbsp;【用户组】编辑</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/groups/:id</div>
+
+                            <h3>Method</h3>
+                            <div>PUT</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">备注</td><td class="td-identifier">remark</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">规则 用逗号隔开</td><td class="td-identifier">rules</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">标题</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark">可选</td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.2.6&nbsp;【用户组】批量删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/groups/deletes</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">需要删除的id</td><td class="td-identifier">ids</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.2.7&nbsp;【用户组】批量启用/禁用</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/groups/enables</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">需要删除的id</td><td class="td-identifier">ids</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                    </div>
+                            <div class="page">
+                    <h2>1.3&nbsp;用户管理</h2>
+                                            <div class="action">
+                            <h3>1.3.1&nbsp;【用户】列表</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/users</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">每页条数</td><td class="td-identifier">limit</td><td class="td-type">number</td><td class="td-remark">若有分页必填</td></tr><tr class="tr-level-1"><td class="td-name">当前页数</td><td class="td-identifier">page</td><td class="td-type">number</td><td class="td-remark">若有分页必填</td></tr><tr class="tr-level-1"><td class="td-name">关键字</td><td class="td-identifier">keywords</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---数组组</td><td class="td-identifier">list</td><td class="td-type">array&lt;object&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-3"><td class="td-name">------密码已加密</td><td class="td-identifier">password</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-3"><td class="td-name">------主键</td><td class="td-identifier">id</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-3"><td class="td-name">------真实姓名</td><td class="td-identifier">realname</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-3"><td class="td-name">------创建时间</td><td class="td-identifier">create_time</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-3"><td class="td-name">------状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-3"><td class="td-name">------备注</td><td class="td-identifier">remark</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-3"><td class="td-name">------所属组织架构</td><td class="td-identifier">s_name</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-3"><td class="td-name">------组织架构名</td><td class="td-identifier">s_name</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-3"><td class="td-name">------用户账号</td><td class="td-identifier">username</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---总条数</td><td class="td-identifier">dataCount</td><td class="td-type">number</td><td class="td-remark">用于前端计算分页</td></tr><tr class="tr-level-1"><td class="td-name">状态码200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.3.2&nbsp;【用户】删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/users/:id</div>
+
+                            <h3>Method</h3>
+                            <div>DELETE</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.3.3&nbsp;【用户】提交</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/users</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">备注</td><td class="td-identifier">remark</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">所属部门</td><td class="td-identifier">structure_id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">所属用户组</td><td class="td-identifier">groups</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">用户密码</td><td class="td-identifier">password</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">用户名</td><td class="td-identifier">username</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">真实姓名</td><td class="td-identifier">realname</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">状态码200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.3.4&nbsp;【用户】编辑</h3>
+
+                            <h3>URL</h3>
+                            <div>adminApi/users/:id</div>
+
+                            <h3>Method</h3>
+                            <div>PUT</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">备注</td><td class="td-identifier">remark</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">所属部门</td><td class="td-identifier">structure_id</td><td class="td-type">number</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">真是姓名</td><td class="td-identifier">realname</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">密码</td><td class="td-identifier">password</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">所属用户组</td><td class="td-identifier">groups</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark">可选</td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.3.5&nbsp;【用户】详情</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/users/:id</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">所属部门</td><td class="td-identifier">structure_id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">所属用户租</td><td class="td-identifier">groups</td><td class="td-type">array&lt;object&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---用户组主键</td><td class="td-identifier">id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---备注</td><td class="td-identifier">remark</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---标题</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---规则</td><td class="td-identifier">rules</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">备注</td><td class="td-identifier">remark</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">真实姓名</td><td class="td-identifier">realname</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">创建时间</td><td class="td-identifier">create_time</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">密码，已加密</td><td class="td-identifier">password</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">用户名</td><td class="td-identifier">username</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.3.6&nbsp;【用户】批量删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/users/deletes</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">需要删除的id</td><td class="td-identifier">ids</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.3.7&nbsp;【用户】批量启用/禁用</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/users/enables</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">需要删除的id</td><td class="td-identifier">ids</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                    </div>
+                            <div class="page">
+                    <h2>1.4&nbsp;组织架构管理</h2>
+                                            <div class="action">
+                            <h3>1.4.1&nbsp;【组织架构】删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/structures/:id</div>
+
+                            <h3>Method</h3>
+                            <div>DELETE</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">状态码。200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.4.2&nbsp;【组织架构】提交</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/structures</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">名称</td><td class="td-identifier">name</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">状态码，200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.4.3&nbsp;【组织架构】编辑</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/structures/:id</div>
+
+                            <h3>Method</h3>
+                            <div>PUT</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">名称</td><td class="td-identifier">name</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark">可选</td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.4.4&nbsp;【组织架构】详情</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/structures/:id</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---状态。1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---主键</td><td class="td-identifier">id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---名称</td><td class="td-identifier">name</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">状态码。200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.4.5&nbsp;【组织架构】列表</h3>
+
+                            <h3>URL</h3>
+                            <div>adminApi/structures</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">array&lt;object&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---名称</td><td class="td-identifier">name</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---主键</td><td class="td-identifier">id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---原来名称</td><td class="td-identifier">else</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---级别</td><td class="td-identifier">level</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级名称</td><td class="td-identifier">p_title</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---经过修改后的名称</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.4.6&nbsp;【组织架构】批量删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/structures/deletes</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">需要删除的id</td><td class="td-identifier">ids</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>1.4.7&nbsp;【组织架构】批量启用/禁用</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/structures/enables</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">需要的id</td><td class="td-identifier">ids</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                    </div>
+                    </div>
+            <div class="module">
+            <h1>2&nbsp;用户基础接口</h1>
+                            <div class="page">
+                    <h2>2.1&nbsp;用户基础</h2>
+                                            <div class="action">
+                            <h3>2.1.1&nbsp;【基础】登录接口</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/base/login</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">帐号</td><td class="td-identifier">username</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">是否记住密码</td><td class="td-identifier">isRemember</td><td class="td-type">number</td><td class="td-remark">1 -- 是；0 -- 否</td></tr><tr class="tr-level-1"><td class="td-name">密码</td><td class="td-identifier">password</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">验证码。</td><td class="td-identifier">verifyCode</td><td class="td-type">string</td><td class="td-remark">按系统配置所需</td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">状态码</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark">200正确，400错误</td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---权限key</td><td class="td-identifier">authKey</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---菜单列表</td><td class="td-identifier">menusList</td><td class="td-type">array&lt;object&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---</td><td class="td-identifier">sessionId</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---用户姓名</td><td class="td-identifier">realname</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---记住密码的key</td><td class="td-identifier">rememberKey</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---权限列表</td><td class="td-identifier">authList</td><td class="td-type">array&lt;string&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>2.1.2&nbsp;【基础】退出登录</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/base/logout</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name"></td><td class="td-identifier">sessionid</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">登录key</td><td class="td-identifier">authkey</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>2.1.3&nbsp;上传文件</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/Upload</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">文件name</td><td class="td-identifier">file</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">文件路径</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>2.1.4&nbsp;【基础】获取验证码</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/base/getVerify</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+                        </div>
+                                            <div class="action">
+                            <h3>2.1.5&nbsp;【基础】修改密码</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/base/setInfo</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">新密码</td><td class="td-identifier">new_pwd</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">登录后验证的key</td><td class="td-identifier">auth_key</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">旧密码</td><td class="td-identifier">old_pwd</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark">返回新的key</td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>2.1.6&nbsp;【基础】检验记住密码</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/base/relogin</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">记住密码key</td><td class="td-identifier">rememberKey</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---权限key</td><td class="td-identifier">authKey</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---</td><td class="td-identifier">sessionId</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---权限列表</td><td class="td-identifier">authList</td><td class="td-type">array&lt;object&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---记住密码的key</td><td class="td-identifier">rememberKey</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---菜单列表</td><td class="td-identifier">menusList</td><td class="td-type">array&lt;string&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---用户姓名</td><td class="td-identifier">realname</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                    </div>
+                    </div>
+            <div class="module">
+            <h1>3&nbsp;系统配置</h1>
+                            <div class="page">
+                    <h2>3.1&nbsp;菜单管理</h2>
+                                            <div class="action">
+                            <h3>3.1.1&nbsp;【菜单】删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/menus/:id</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>3.1.2&nbsp;【菜单】添加</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/menus</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">菜单类型，</td><td class="td-identifier">menu_type</td><td class="td-type">number</td><td class="td-remark">1普通三级菜单，2单页，3外联</td></tr><tr class="tr-level-1"><td class="td-name">排序</td><td class="td-identifier">sort</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">权限id</td><td class="td-identifier">rule_id</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">标题</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">子菜单来源</td><td class="td-identifier">from</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">模块</td><td class="td-identifier">module</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">图标</td><td class="td-identifier">icon</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">连接</td><td class="td-identifier">url</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">上级菜单id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">所属菜单</td><td class="td-identifier">menu</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>3.1.3&nbsp;【菜单】编辑</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/menus/:id</div>
+
+                            <h3>Method</h3>
+                            <div>PUT</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark">上级id，可选</td></tr><tr class="tr-level-1"><td class="td-name">标题</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">连接</td><td class="td-identifier">url</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">所属菜单</td><td class="td-identifier">menu</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">权限id</td><td class="td-identifier">rule_id</td><td class="td-type">string</td><td class="td-remark">可选</td></tr><tr class="tr-level-1"><td class="td-name">模块</td><td class="td-identifier">module</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">子菜单来源</td><td class="td-identifier">from</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">菜单类型</td><td class="td-identifier">menu_type</td><td class="td-type">number</td><td class="td-remark">1普通三级菜单，2单页，3外链，可选</td></tr><tr class="tr-level-1"><td class="td-name">状态1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark">可选</td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>3.1.4&nbsp;【菜单】详情</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/menus/:id</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---状态1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---排序</td><td class="td-identifier">sort</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---子菜单来源</td><td class="td-identifier">from</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---模块</td><td class="td-identifier">module</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---图标</td><td class="td-identifier">icon</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---主键</td><td class="td-identifier">id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---链接</td><td class="td-identifier">url</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---菜单类型</td><td class="td-identifier">menu_type</td><td class="td-type">number</td><td class="td-remark">1普通三级菜单，2单页，3外链</td></tr><tr class="tr-level-2"><td class="td-name">---菜单标题</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---权限名称</td><td class="td-identifier">rule_name</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>3.1.5&nbsp;【菜单】列表</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/menus</div>
+
+                            <h3>Method</h3>
+                            <div>GET</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">array&lt;object&gt;</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---权限</td><td class="td-identifier">rule_name</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---子菜单来源</td><td class="td-identifier">from</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---排序</td><td class="td-identifier">sort</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---级别</td><td class="td-identifier">level</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---图标</td><td class="td-identifier">icon</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---主键</td><td class="td-identifier">id</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---标题</td><td class="td-identifier">title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---模块</td><td class="td-identifier">module</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级菜单名称</td><td class="td-identifier">p_title</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---原来标题名称</td><td class="td-identifier">else</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---所属菜单</td><td class="td-identifier">menu</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---状态，1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---链接</td><td class="td-identifier">url</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---上级id</td><td class="td-identifier">pid</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---菜单类别</td><td class="td-identifier">menu_type</td><td class="td-type">number</td><td class="td-remark">1普通三级菜单，2单页菜单，3外链</td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>3.1.6&nbsp;【菜单】批量删除</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/menus/deletes</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">需要删除的ids</td><td class="td-identifier">ids</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>3.1.7&nbsp;【菜单】批量启用/禁用</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/menus/enables</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">1启用，0禁用</td><td class="td-identifier">status</td><td class="td-type">array&lt;number&gt;</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                    </div>
+                            <div class="page">
+                    <h2>3.2&nbsp;系统管理</h2>
+                                            <div class="action">
+                            <h3>3.2.1&nbsp;系统配置</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/systemConfigs</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">logo类型</td><td class="td-identifier">LOGO_TYPE</td><td class="td-type">number</td><td class="td-remark">1图片2文字</td></tr><tr class="tr-level-1"><td class="td-name">登录是否需要验证码</td><td class="td-identifier">IDENTIFYING_CODE</td><td class="td-type">string</td><td class="td-remark">1需要，0不需要</td></tr><tr class="tr-level-1"><td class="td-name">登录有效期</td><td class="td-identifier">LOGIN_SESSION_VALID</td><td class="td-type">number</td><td class="td-remark">秒为单位</td></tr><tr class="tr-level-1"><td class="td-name">系统logo</td><td class="td-identifier">SYSTEM_LOGO</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">系统名称</td><td class="td-identifier">SYSTEM_NAME</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回数组</td><td class="td-identifier">data</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                            <div class="action">
+                            <h3>3.2.2&nbsp;获取配置</h3>
+
+                            <h3>URL</h3>
+                            <div>admin/base/getConfigs</div>
+
+                            <h3>Method</h3>
+                            <div>POST</div>
+
+                            <h3>Description</h3>
+                            <div></div>
+
+                            <h3>Request Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead></table>
+
+                            <h3>Response Param List</h3>
+                            <table class="param-table"><thead><th class="th-name">Name</th><th class="th-identifier">Identifier</th><th class="th-type">Type</th><th class="th-remark">Remark</th></thead><tr class="tr-level-1"><td class="td-name">错误信息</td><td class="td-identifier">error</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">返回信息</td><td class="td-identifier">data</td><td class="td-type">object</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---是否需要验证码</td><td class="td-identifier">IDENTIFYING_CODE</td><td class="td-type">number</td><td class="td-remark">1需要，0不需要</td></tr><tr class="tr-level-2"><td class="td-name">---会话有效期</td><td class="td-identifier">LOGIN_SESSION_VALID</td><td class="td-type">number</td><td class="td-remark">秒为单位</td></tr><tr class="tr-level-2"><td class="td-name">---系统logo</td><td class="td-identifier">SYSTEM_LOGO</td><td class="td-type">number</td><td class="td-remark"></td></tr><tr class="tr-level-2"><td class="td-name">---系统名称</td><td class="td-identifier">SYSTEM_NAME</td><td class="td-type">string</td><td class="td-remark"></td></tr><tr class="tr-level-1"><td class="td-name">200正确，400错误</td><td class="td-identifier">code</td><td class="td-type">string</td><td class="td-remark"></td></tr></table>
+                        </div>
+                                    </div>
+                    </div>
+    </div>
+</body>
+</html>
