@@ -127,7 +127,8 @@
             resolve(data)
           } else {
             this.apiGet('admin/groups').then((res) => {
-              console.log('groups = ', _g.j2s(res))
+              this.AllGroups = res
+              console.log('= groups = ', _g.j2s(res))
               this.handelResponse(res, (data) => {
                 resolve(data)
               })
@@ -146,7 +147,7 @@
         this.getAllOrgs()
         this.groupOptions = await this.getAllGroups()
         this.apiGet('admin/users/edit/' + this.id).then((res) => {
-          console.log('res = ', _g.j2s(res))
+          console.log('= res = ', _g.j2s(res))
           this.handelResponse(res, (data) => {
             this.form.id = data.id
             this.form.username = data.username
@@ -154,7 +155,14 @@
             this.form.structure_id = data.structureId
             this.form.remark = data.remark
             console.info('structureId = ', data.structureId)
-            console.info('data.pid = ', data.pid)
+            console.info('groupName = ', data.groupName)
+            _(this.groupOptions).forEach((groupOpt) => { console.info('groupOpt = ', _g.j2s(groupOpt)) })
+            _(this.groupOptions).forEach((groupOpt) => { console.info('groupOpt.pid = ', groupOpt.pid) })
+            _(this.groupOptions).forEach((res2) => {
+              if (data.groupName == res2.else) {
+                this.selectedGroups.push(data.groupName)
+              }
+            })
             _(data.groups).forEach((res1) => {
               _(this.groupOptions).forEach((res2) => {
                 if (res1.title == res2.else) {
