@@ -29,6 +29,11 @@
 			prop="username"
 			width="200">
 			</el-table-column>
+      <el-table-column
+			label="岗位"
+			prop="pname"
+			width="200">
+			</el-table-column>
 			<el-table-column
 			label="备注"
 			prop="remark"
