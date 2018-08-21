@@ -5,22 +5,22 @@
 				<el-input v-model.trim="form.username" class="h-40 w-200" :maxlength=12 :disabled="true"></el-input>
 			</el-form-item>
 			<el-form-item label="密码">
-				<el-input v-model.trim="password" class="h-40 w-200"></el-input>
+				<el-input v-model.trim="form.password" class="h-40 w-200"></el-input>
 			</el-form-item>
 			<el-form-item label="真实姓名" prop="realname">
 				<el-input v-model.trim="form.realname" class="h-40 w-200"></el-input>
 			</el-form-item>
-			<el-form-item label="所属组织架构" prop="structure_id">
-				<el-select v-model="form.structure_id" placeholder="请选择组织架构" class="w-200">
+			<el-form-item label="所属组织架构" prop="structureId">
+				<el-select v-model="form.structureId" placeholder="请选择组织架构" class="w-200">
 					<el-option v-for="item in orgsOptions" :label="item.title" :value="item.id"></el-option>
 				</el-select>
 			</el-form-item>
 			<el-form-item label="备注">
 				<el-input v-model.trim="form.remark" class="h-40 w-200"></el-input>
 			</el-form-item>
-			<el-form-item label="用户组">
-				<el-checkbox-group v-model="selectedGroups">
-					<el-checkbox v-for="item in groupOptions" :label="item.else" class="form-checkbox"></el-checkbox>
+			<el-form-item label="用户组" >
+				<el-checkbox-group v-model="selectedGroups"   >
+					<el-checkbox v-for="item in groupOptions" :label="item.else"     @change="selectCheckbox" class="form-checkbox"></el-checkbox>
 				</el-checkbox-group>
 			</el-form-item>
 			<el-form-item>
@@ -47,7 +47,7 @@
         form: {
           username: '',
           realname: '',
-          structure_id: null,
+          structureId: null,
           remark: '',
           groups: []
         },
@@ -63,7 +63,7 @@
           realname: [
             { required: true, message: '请输入真实姓名' }
           ],
-          structure_id: [
+          structureId: [
             { required: true, message: '请选择用户所属组织架构' }
           ]
         }
@@ -72,6 +72,7 @@
     methods: {
       selectCheckbox() {
         let temp = false
+        console.log('=1= selectedIds = ', _g.j2s(this.selectedIds))
         _(this.groupOptions).forEach((res) => {
           if (this.selectedGroups.toString().indexOf(res.else) > -1) {
             this.selectedIds.push(res.id)
@@ -81,6 +82,7 @@
           this.form.groups = _.cloneDeep(this.selectedIds)
           temp = true
         }
+        console.log('=2= selectedIds = ', _g.j2s(this.selectedIds))
         this.selectedIds = []
         return temp
       },
@@ -99,7 +101,6 @@
           _g.toastMsg('warning', '请选择用户组')
           return
         }
-        console.log('selectedIds = ', _g.j2s(this.selectedIds))
         this.$refs.form.validate((pass) => {
           if (pass) {
             this.isLoading = !this.isLoading
@@ -127,13 +128,13 @@
             resolve(data)
           } else {
             this.apiGet('admin/groups').then((res) => {
-              this.AllGroups = res
-              console.log('= groups = ', _g.j2s(res))
+              console.log('groups = ', _g.j2s(res))
               this.handelResponse(res, (data) => {
                 resolve(data)
               })
             })
           }
+          console.log('groups data = ', _g.j2s(data))
         })
       },
       getAllOrgs() {
@@ -147,26 +148,19 @@
         this.getAllOrgs()
         this.groupOptions = await this.getAllGroups()
         this.apiGet('admin/users/edit/' + this.id).then((res) => {
-          console.log('= res = ', _g.j2s(res))
+          console.log('res = ', _g.j2s(res))
           this.handelResponse(res, (data) => {
             this.form.id = data.id
             this.form.username = data.username
             this.form.realname = data.realname
-            this.form.structure_id = data.structureId
+            this.form.structureId = data.structureId
             this.form.remark = data.remark
-            console.info('structureId = ', data.structureId)
-            console.info('groupName = ', data.groupName)
-            _(this.groupOptions).forEach((groupOpt) => { console.info('groupOpt = ', _g.j2s(groupOpt)) })
-            _(this.groupOptions).forEach((groupOpt) => { console.info('groupOpt.pid = ', groupOpt.pid) })
-            _(this.groupOptions).forEach((res2) => {
-              if (data.groupName == res2.else) {
-                this.selectedGroups.push(data.groupName)
-              }
-            })
-            _(data.groups).forEach((res1) => {
+            console.info('structureId  = ', data.structureId)
+            console.info('sysAdminAccess = ', data.sysAdminAccess)
+            _(data.sysAdminAccess).forEach((res1) => {
               _(this.groupOptions).forEach((res2) => {
-                if (res1.title == res2.else) {
-                  this.selectedGroups.push(res1.title)
+                if (res1.groupName == res2.else) {
+                  this.selectedGroups.push(res1.groupName)
                 }
               })
             })
