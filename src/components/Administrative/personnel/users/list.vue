@@ -12,45 +12,22 @@
 				</el-input>
 			</div>
 		</div>
-		<el-table
-		:data="tableData"
-		style="width: 100%"
-		@selection-change="selectItem">
-			<el-table-column
-			type="selection"
-			width="50">
-			</el-table-column>
-			<el-table-column
-			prop="sname"
-			label="所属组织架构">
-			</el-table-column>
-			<el-table-column
-			label="用户名"
-			prop="username"
-			width="200">
-			</el-table-column>
-      <el-table-column
-			label="岗位"
-			prop="pname"
-			width="200">
-			</el-table-column>
-			<el-table-column
-			label="备注"
-			prop="remark"
-			width="200">
-			</el-table-column>
-			<el-table-column
-			label="状态"
-			width="100">
+    <!--列表-->
+		<el-table :data="tableData"   style="width: 100%"  @selection-change="selectItem">
+			<el-table-column type="selection" width="50"></el-table-column>
+      <el-table-column type="index" width="60"  ></el-table-column>
+			<el-table-column prop="sname" label="所属组织架构" sortable></el-table-column>
+			<el-table-column prop="username" label="用户名" width="200" sortable></el-table-column>
+      <el-table-column prop="pname" label="岗位" width="200"></el-table-column>
+			<el-table-column prop="remark" label="备注"		width="200"></el-table-column>
+			<el-table-column label="状态" width="100">
         <template scope="scope">
           <div>
             {{ scope.row.status | status }}
           </div>
         </template>
 			</el-table-column>
-			<el-table-column
-			label="操作"
-			width="200">
+			<el-table-column	label="操作"	width="200">
         <template scope="scope">
           <div>
             <span>
@@ -59,7 +36,7 @@
               </router-link>
             </span>
             <span>
-              <el-button size="small" type="danger" @click="confirmDelete(scope.row)">删除</el-button>
+              <el-button size="small" type="danger" @click="confirmDelete(scope.$index,scope.row)">删除</el-button>
             </span>
           </div>
         </template>
@@ -68,10 +45,8 @@
     <!-- v-bind 'setting' data to config page bar -->
     <!-- bind event 'page-change' to receive page info change -->
     <!--<v-page :setting="pageSet" @page-change="pageChange"></v-page>-->
-
- 
-		 <div class="pos-rel p-t-20">
-			<btnGroup :selectedData="multipleSelection" :type="'users'"></btnGroup>
+		<div class="pos-rel p-t-20">
+			<btnGroup :selectedData ="multipleSelection" :type="'users'"></btnGroup>
 			<div class="block pages">
 				<el-pagination
 				@current-change="handleCurrentChange"
@@ -81,9 +56,7 @@
 				:total="dataCount">
 				</el-pagination>
       </div>
-		 </div>
-     
-
+		</div>
 	</div>
 </template>
 
@@ -105,13 +78,14 @@
       search() {
         router.push({ path: this.$route.path, query: { realname: this.realname, page: 1 }})
       },
-      selectItem(val) {
+      selectItem: function (val) {
+        console.info(' ===  ' + _g.j2s(val))
         this.multipleSelection = val
       },
       handleCurrentChange(page) {
         router.push({ path: this.$route.path, query: { realname: this.realname, page: page }})
       },
-      confirmDelete(item) {
+      confirmDelete(index, item) {
         this.$confirm('确认删除该用户?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',

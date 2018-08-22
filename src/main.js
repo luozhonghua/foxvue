@@ -8,6 +8,7 @@ import _ from 'lodash'
 import moment from 'moment'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import Vuex from 'vuex'
 import routes from './routes'
 import VueRouter from 'vue-router'
 import store from './vuex/store'
@@ -19,6 +20,8 @@ import 'assets/css/global.css'
 import 'assets/css/base.css'
 import vPage from 'v-page'
 Vue.use(vPage)
+Vue.use(ElementUI)
+Vue.use(Vuex)
 axios.defaults.baseURL = HOST
 axios.defaults.timeout = 1000 * 15
 axios.defaults.headers.authKey = Lockr.get('authKey')

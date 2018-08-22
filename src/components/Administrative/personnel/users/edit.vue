@@ -12,7 +12,7 @@
 			</el-form-item>
 			<el-form-item label="所属组织架构" prop="structureId">
 				<el-select v-model="form.structureId" placeholder="请选择组织架构" class="w-200">
-					<el-option v-for="item in orgsOptions" :label="item.title" :value="item.id"></el-option>
+					<el-option v-for="item in orgsOptions" :label="item.title" :key="item.id" :value="item.id"></el-option>
 				</el-select>
 			</el-form-item>
 			<el-form-item label="备注">
