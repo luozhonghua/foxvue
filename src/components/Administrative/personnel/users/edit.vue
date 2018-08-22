@@ -4,9 +4,9 @@
 			<el-form-item label="用户名" prop="username">
 				<el-input v-model.trim="form.username" class="h-40 w-200" :maxlength=12 :disabled="true"></el-input>
 			</el-form-item>
-			<el-form-item label="密码">
+			<!--<el-form-item label="密码" prop="password">
 				<el-input v-model.trim="form.password" class="h-40 w-200"></el-input>
-			</el-form-item>
+			</el-form-item>-->
 			<el-form-item label="真实姓名" prop="realname">
 				<el-input v-model.trim="form.realname" class="h-40 w-200"></el-input>
 			</el-form-item>
@@ -109,7 +109,7 @@
             }
             this.apiPost('admin/users/update/', this.form).then((res) => {
               this.handelResponse(res, (data) => {
-                _g.toastMsg('success', '添加成功')
+                _g.toastMsg('success', '更新成功')
                 _g.clearVuex('setUsers')
                 setTimeout(() => {
                   this.goback()

@@ -118,7 +118,7 @@
           type: 'warning'
         }).then(() => {
           _g.openGlobalLoading()
-          this.apiDelete('admin/users/', item.id).then((res) => {
+          this.apiDelete('admin/users/delete/', item.id).then((res) => {
             _g.closeGlobalLoading()
             this.handelResponse(res, (data) => {
               _g.toastMsg('success', '删除成功')
