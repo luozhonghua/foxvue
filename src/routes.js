@@ -20,8 +20,8 @@ import groupsEdit from './components/Administrative/structures/groups/edit.vue'
 import usersList from './components/Administrative/personnel/users/list.vue'
 import usersAdd from './components/Administrative/personnel/users/add.vue'
 import usersEdit from './components/Administrative/personnel/users/edit.vue'
-
 /**
+ * import Dashboard from './components/Dashboard'
  * meta参数解析
  * hideLeft: 是否隐藏左侧菜单，单页菜单为true
  * module: 菜单所属模块
@@ -30,6 +30,19 @@ import usersEdit from './components/Administrative/personnel/users/edit.vue'
 
 const routes = [
   { path: '/', component: Login, name: 'Login' },
+  /**
+   * {
+    path: '/',
+    name: 'dashboard',
+    component: Dashboard,
+    redirect: '/dashboard',
+    leaf: true,
+    menuShow: true,
+    iconCls: 'iconfont icon-home',
+    children: [
+      { path: '/dashboard', component: Dashboard, name: '首页', menuShow: true }
+    ]
+  },*/
   {
     path: '/home',
     component: Home,

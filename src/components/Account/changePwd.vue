@@ -76,7 +76,7 @@
       }
     },
     created() {
-      this.form.auth_key = Lockr.get('authKey')
+      this.formpass.auth_key = Lockr.get('authKey')
     },
     mixins: [http, fomrMixin]
   }

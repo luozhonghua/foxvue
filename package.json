@@ -1,5 +1,5 @@
 {
-  "name": "cloud-vue",
+  "name": "st-cloud-vue",
   "version": "1.0.0",
   "description": "cloud-vue made by vue2.0",
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "echarts": "^4.1.0",
     "element-ui": "1.2.7",
     "font-awesome": "^4.7.0",
     "js-cookie": "^2.1.3",

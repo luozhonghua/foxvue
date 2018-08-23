@@ -13,8 +13,8 @@
 			</div>
 		</div>
     <!--列表-->
-		<el-table :data="tableData"   style="width: 100%"  @selection-change="selectItem">
-			<el-table-column type="selection" width="50"></el-table-column>
+		<el-table ref="multipleTable" :data="tableData" :fit="true"   style="width: 100%" @row-click="handleCurrentChangeBox"  @selection-change="selectItem">
+			<el-table-column type="selection" width="50" prop='uuid' reserve-selection=""   ></el-table-column>
       <el-table-column type="index" width="60"  ></el-table-column>
 			<el-table-column prop="sname" label="所属组织架构" sortable></el-table-column>
 			<el-table-column prop="username" label="用户名" width="200" sortable></el-table-column>
@@ -45,8 +45,12 @@
     <!-- v-bind 'setting' data to config page bar -->
     <!-- bind event 'page-change' to receive page info change -->
     <!--<v-page :setting="pageSet" @page-change="pageChange"></v-page>-->
+  <div class="row mt30 pl15">
+     <el-button type="warning" @click="delGroup" :disabled="this.multipleSelection.length === 0">批量删除</el-button>
+            <!--disabled值动态显示，默认为true,当选中复选框后值为false-->
+  </div>
 		<div class="pos-rel p-t-20">
-			<btnGroup :selectedData ="multipleSelection" :type="'users'"></btnGroup>
+			<btnGroup :selectedData="this.multipleSelection" :type="'users'"></btnGroup>
 			<div class="block pages">
 				<el-pagination
 				@current-change="handleCurrentChange"
@@ -78,9 +82,34 @@
       search() {
         router.push({ path: this.$route.path, query: { realname: this.realname, page: 1 }})
       },
-      selectItem: function (val) {
+      selectItem(val) {
         console.info(' ===  ' + _g.j2s(val))
         this.multipleSelection = val
+      },
+      delGroup() {
+        var ids = this.multipleSelection.map(item => item.id).join()
+        this.$confirm('确认删除该用户?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          _g.openGlobalLoading()
+          let para = { id: row.id }
+          this.apiDelete('admin/users/deletes/', para).then((res) => {
+            _g.closeGlobalLoading()
+            this.handelResponse(res, (data) => {
+              _g.toastMsg('success', '删除成功')
+              setTimeout(() => {
+                _g.shallowRefresh(this.$route.name)
+              }, 1500)
+            })
+          })
+        }).catch(() => {
+          // catch error
+        })
+      },
+      handleCurrentChangeBox(row, event, column) {
+        this.$refs.multipleTable.toggleRowSelection(row)
       },
       handleCurrentChange(page) {
         router.push({ path: this.$route.path, query: { realname: this.realname, page: page }})

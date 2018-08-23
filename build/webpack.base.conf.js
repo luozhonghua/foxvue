@@ -25,7 +25,7 @@ module.exports = {
     filename: '[name].js'
   },
   eslint: {
-    configFile: './.eslintrc.json'
+  //  configFile: './.eslintrc.json'
   },
   plugins: [
     new webpack.DefinePlugin({

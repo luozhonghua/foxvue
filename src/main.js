@@ -8,10 +8,10 @@ import _ from 'lodash'
 import moment from 'moment'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
-import Vuex from 'vuex'
 import routes from './routes'
 import VueRouter from 'vue-router'
 import store from './vuex/store'
+import Vuex from 'vuex'
 import filter from './assets/js/filter'
 import _g from './assets/js/global'
 import NProgress from 'nprogress'
@@ -19,8 +19,8 @@ import 'nprogress/nprogress.css'
 import 'assets/css/global.css'
 import 'assets/css/base.css'
 import vPage from 'v-page'
-Vue.use(vPage)
 Vue.use(ElementUI)
+Vue.use(vPage)
 Vue.use(Vuex)
 axios.defaults.baseURL = HOST
 axios.defaults.timeout = 1000 * 15

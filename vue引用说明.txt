@@ -1,0 +1,13 @@
+babel-polyfill  用于实现浏览器不支持原生功能的代码
+axios           基于Promise 用于浏览器和 nodejs 的 HTTP 客户端
+lockr           localStorage组件
+js-cookie       cookie组件
+Lodash          简单操控 array、number、objects、string  
+moment          日期处理类库
+element-ui      桌面UI框架
+routes          路由
+vuex            管理vue的所有组件状态  
+nprogress       进度条
+v-page          分页组件
+filter          自定义过滤器
+global          自定义全局公共
