@@ -37,6 +37,8 @@
         <el-tree
                 :data="nodes"
                 :props="defaultProps"
+                :default-expanded-keys = "[13,14,15,16,17,21,23,39,40,41,42,43]"
+                :default-checked-keys = "[13,14,15,16,17,21,23,39,40,41,42,43]"
                 show-checkbox
                 default-expand-all
                 node-key="id"
