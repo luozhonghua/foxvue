@@ -46,8 +46,8 @@
     <!-- bind event 'page-change' to receive page info change -->
     <!--<v-page :setting="pageSet" @page-change="pageChange"></v-page>-->
   <div class="row mt30 pl15">
-     <el-button type="warning" @click="delGroup" :disabled="this.multipleSelection.length === 0">批量删除</el-button>
-            <!--disabled值动态显示，默认为true,当选中复选框后值为false-->
+     <el-button type="danger" @click="delGroup" :disabled="this.multipleSelection.length === 0">批量删除</el-button>
+      <!--disabled值动态显示，默认为true,当选中复选框后值为false-->
   </div>
 		<div class="pos-rel p-t-20">
 			<btnGroup :selectedData="this.multipleSelection" :type="'users'"></btnGroup>
@@ -88,25 +88,35 @@
       },
       delGroup() {
         var ids = this.multipleSelection.map(item => item.id).join()
-        this.$confirm('确认删除该用户?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          _g.openGlobalLoading()
-          let para = { id: row.id }
-          this.apiDelete('admin/users/deletes/', para).then((res) => {
-            _g.closeGlobalLoading()
-            this.handelResponse(res, (data) => {
-              _g.toastMsg('success', '删除成功')
-              setTimeout(() => {
-                _g.shallowRefresh(this.$route.name)
-              }, 1500)
-            })
-          })
-        }).catch(() => {
-          // catch error
+        var isAdmin
+        _(this.multipleSelection).forEach((res) => {
+          if (res.username == 'admin') {
+            isAdmin = 'admin'
+            _g.toastMsg('error', '管理员禁止删除,请重新选择')
+            return
+          }
         })
+        if (isAdmin != 'admin') {
+          this.$confirm('确认删除该用户?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            _g.openGlobalLoading()
+            let para = { ids: ids, username: username }
+            this.apiDelete('admin/users/deletes/', para).then((res) => {
+              _g.closeGlobalLoading()
+              this.handelResponse(res, (data) => {
+                _g.toastMsg('success', '删除成功')
+                setTimeout(() => {
+                  _g.shallowRefresh(this.$route.name)
+                }, 1500)
+              })
+            })
+          }).catch(() => {
+            // catch error
+          })
+        }
       },
       handleCurrentChangeBox(row, event, column) {
         this.$refs.multipleTable.toggleRowSelection(row)

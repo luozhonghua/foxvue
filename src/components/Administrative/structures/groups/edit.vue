@@ -36,12 +36,13 @@
         </div>-->
         <el-tree
                 :data="nodes"
+                :props="defaultProps"
                 show-checkbox
                 default-expand-all
                 node-key="id"
                 ref="tree"
                 highlight-current
-                :props="defaultProps">
+                @check-change="handleCheckChange" >
         </el-tree>
 
       </el-form-item>
@@ -83,6 +84,9 @@
       }
     },
     methods: {
+      handleCheckChange(data, checked, indeterminate) {
+         console.log(data, checked, indeterminate)
+      },
       edit(form) {
         this.form.rules = this.$refs.tree.getCheckedKeys().toString()
         this.$refs[form].validate((valid) => {

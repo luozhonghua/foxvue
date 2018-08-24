@@ -19,7 +19,6 @@ import 'nprogress/nprogress.css'
 import 'assets/css/global.css'
 import 'assets/css/base.css'
 import vPage from 'v-page'
-Vue.use(ElementUI)
 Vue.use(vPage)
 Vue.use(Vuex)
 axios.defaults.baseURL = HOST

@@ -46,7 +46,7 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')]
   },
   module: {
-    preLoaders: [
+    /**preLoaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -57,7 +57,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint'
       }
-    ],
+    ],*/
     loaders: [
       {
         test: /\.vue$/,
