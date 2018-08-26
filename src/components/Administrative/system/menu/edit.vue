@@ -57,7 +57,7 @@
           ruleId: null,
           pid: '',
           menuType: '',
-          url: '',
+          url: null,
           module: '',
           menu: '',
           sort: ''
@@ -88,7 +88,9 @@
           if (pass) {
             this.isLoading = !this.isLoading
             this.apiPost('admin/menus/update/', this.form).then((res) => {
+               console.info("this.form.url:"+this.form.url)
               this.handelResponse(res, (data) => {
+                console.info("url:"+data.url)
                 _g.toastMsg('success', '编辑成功')
                 setTimeout(() => {
                   this.goback()
@@ -126,7 +128,9 @@
       this.apiGet('admin/menus/edit/' + this.id).then((res) => {
         this.handelResponse(res, (data) => {
           data.menuType = data.menuType.toString()
+          this.form.url=data.url.toString()
           this.form = data
+          console.info("created url:"+data.url)
         })
       })
     },
