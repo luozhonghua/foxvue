@@ -106,8 +106,7 @@ const apiMethods = {
     },
     resetCommonData(data) {
       _(data.menusList).forEach((res, key) => {
-        console.log(key)
-        console.log(res)
+        console.log("key:"+ key +"\nres:"+ JSON.stringify(res))
         if (key == 0) {
           res.selected = true
         } else {
@@ -126,6 +125,7 @@ const apiMethods = {
       if (data.menusList[0].url) {
         routerUrl = data.menusList[0].url
       } else {
+        console.log("第1个菜单子节点:"+JSON.stringify(data.menusList[0].child[0])+"\n第2个菜单子节点:"+JSON.stringify(data.menusList[0].child[0].child[0]))
         routerUrl = data.menusList[0].child[0].child[0].url
       }
       setTimeout(() => {

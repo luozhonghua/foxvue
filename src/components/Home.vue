@@ -11,6 +11,7 @@
 			</el-col>
 			<el-col :span="16" class="ofv-hd">
 				<div class="fl p-l-20 p-r-20 top-menu" :class="{'top-active': menu.selected}" v-for="menu in topMenu" @click="switchTopMenu(menu)">{{menu.title}}</div>
+        <div class="fl p-l-20 p-r-20 top-menu" :class="{'top-active': menu.selected}"  >ST-XX系统</div>
 			</el-col>
 			<el-col :span="4" class="pos-rel">
 				<el-dropdown @command="handleMenu" class="user-menu">
@@ -169,6 +170,7 @@
         })
       },
       switchTopMenu(item) {
+        console.info("top:"+JSON.stringify(item))
         if (!item.child) {
           router.push(item.url)
         } else {

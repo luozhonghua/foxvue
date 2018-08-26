@@ -6,7 +6,7 @@
       </el-form-item>
       <el-form-item label="父级用户组" prop="pid">
         <el-select v-model="form.pid" placeholder="父级用户组" class="w-200">
-          <el-option v-for="item in options" :label="item.title" :value="item.id"></el-option>
+          <el-option v-for="item in options" :label="item.title" :value="item.id" :key="item.title"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="备注">
@@ -36,14 +36,13 @@
         </div>-->
         <el-tree
                 :data="nodes"
-                :props="defaultProps"
                 show-checkbox
                 default-expand-all
                 node-key="id"
                 ref="tree"
                 highlight-current
-                check-on-click-node="true"
-                :func='nodeClick' >
+                :default-checked-keys="selectedNodes"
+                :props="defaultProps">
         </el-tree>
 
       </el-form-item>
@@ -62,6 +61,23 @@
     data() {
       return {
         isLoading: false,
+        nodes: [
+            {
+            id: 111,
+            title: '一级 1',
+            child: [{
+              id: 114,
+              title: '二级 1-1',
+              child: [{
+                id: 9,
+                title: '三级 1-1-1'
+              }, {
+                id: 10,
+                title: '三级 1-1-2'
+              }]
+            }]
+           }
+        ],
         form: {
           id: null,
           title: '',
@@ -70,8 +86,8 @@
           rules: '',
           status: null
         },
+        resourceCheckedKey:[9,10],
         options: [{ pid: '0', title: '无' }],
-        nodes: [],
         selectedNodes: [],
         rules: {
           title: [
@@ -81,13 +97,14 @@
         defaultProps: {
           children: 'child',
           label: 'title'
-        }
+        } 
       }
     },
     methods: {
-      nodeClick(m, parent, trees) {
-         console.log(m, parent, trees)
-      },
+      
+     // handleCheckChange(data, checked, indeterminate) {
+         //console.log(data, checked, indeterminate)
+     // },
       edit(form) {
         this.form.rules = this.$refs.tree.getCheckedKeys().toString()
         this.$refs[form].validate((valid) => {
@@ -95,7 +112,6 @@
             this.isLoading = !this.isLoading
             this.apiPost('admin/groups/update', this.form).then((res) => {
               this.handelResponse(res, (data) => {
-                console.info("update this.form:"+JSON.stringify(this.form))
                 _g.toastMsg('success', '编辑成功')
                 setTimeout(() => {
                   this.goback()
@@ -110,7 +126,10 @@
       getRules() {
         return new Promise((resolve, reject) => {
           this.apiGet('admin/rules?type=tree').then((res) => {
+            //console.log('res rules = ', _g.j2s(res))
             this.handelResponse(res, (data) => {
+              //"child":[],替换下
+              //console.log('res rules = ', _g.j2s(data))
               resolve(data)
             })
           })
@@ -118,39 +137,63 @@
       },
       getGroups() {
         this.apiGet('admin/groups').then((res) => {
-          console.log('res = ', _g.j2s(res))
+          //console.log('res groups = ', _g.j2s(res))
           this.handelResponse(res, (data) => {
             _(data).forEach((ret) => {
               ret.id = ret.id.toString()
-              //console.log('ret.id = ', ret.id)
             })
             this.options = this.options.concat(data)
           })
         })
       },
+      setCheckedKeys2(val) {
+        this.$refs.tree.setCheckedKeys([11,13,14,15,16,17,18,19])
+        // this.form.defaultChekcArray = val.toString().split(',')
+        // console.log('defaultChekcArray = ', _g.j2s(this.form.defaultChekcArray))
+      },
+      async getGroupInfo2(){
+          this.form.id = this.$route.params.id
+          let arr = await this.getRules()
+          this.nodes = this.nodes.concat(arr)
+
+          this.$refs.tree.setCheckedKeys([111,114,9,10])
+      },
+      
+       checkedKey() {
+           this.resourceCheckedKey =[11,13,14,15,16,17,18,19]
+           //this.$refs.tree.setCheckedKeys([11,13,14,15,16,17,18,19])
+      },
+
+
       async getGroupInfo() {
         this.form.id = this.$route.params.id
         let arr = await this.getRules()
         this.nodes = this.nodes.concat(arr)
+        // console.log('this.nodes = ', _g.j2s(this.nodes))
         this.apiGet('admin/groups/edit/' + this.form.id).then((res) => {
           this.handelResponse(res, (data) => {
-            console.log('  data = ', _g.j2s(data))
+            console.log('data = ', _g.j2s(data))
             this.form.title = data.title
             this.form.pid = data.pid ? data.pid.toString() : ''
             this.form.remark = data.remark
             this.form.status = data.status
             let array = data.rules.split(',')
-            console.log('  array = ', _g.j2s(array))
+            console.log('data.rules = ', _g.j2s(array))
             this.$refs.tree.setCheckedKeys(array)
+            //this.setCheckedKeys2(array)
             console.log('getCheckedKeys = ', _g.j2s( this.$refs.tree.getCheckedKeys()))
           })
         })
       }
     },
-    mounted() {
-      this.getGroupInfo()
+    
+    created() {
       this.getGroups()
+      this.getGroupInfo()
+      //this.checkedKey()
+       
     },
+    
     mixins: [http, fomrMixin]
   }
 </script>

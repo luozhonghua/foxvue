@@ -84,7 +84,7 @@
               } else {
                 this.refreshVerify()
                 if (this.checked) {
-                  Cookies.set('rememberPwd', true, { expires: 1 })
+                  Cookies.set('rememberPwd', true, { expires: 360 })
                 }
                 this.resetCommonData(res.data)
                 _g.toastMsg('success', '登录成功')

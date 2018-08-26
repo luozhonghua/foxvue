@@ -15,9 +15,7 @@
 					<div class="w-100p h-50 p-l-40 left-menu pointer c-blue" @click="routerChange(item)">{{item.title}}</div>
 				</template>
 				<template v-else>
-					<div class="w-100p h-50 p-l-40 left-menu pointer c-gra" @click="routerChange(item)">
-						{{item.title}}
-					</div>
+					<div class="w-100p h-50 p-l-40 left-menu pointer c-gra" @click="routerChange(item)">{{item.title}}</div>
 				</template>
 			</div>
 		</div>

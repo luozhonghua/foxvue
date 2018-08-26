@@ -21,7 +21,7 @@
 			</el-table-column>
 			<el-table-column
 			prop="title"
-			label="标题">
+			label="菜单">
 			</el-table-column>
 		<!-- <el-table-column
 		prop="menu_type"

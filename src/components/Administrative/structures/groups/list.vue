@@ -98,6 +98,7 @@
         this.apiGet('admin/groups').then((res) => {
           this.handelResponse(res, (data) => {
             this.tableData = data
+            console.info("tableData="+JSON.stringify(data))
           })
         })
       }
