@@ -11,6 +11,3 @@ nprogress       进度条
 v-page          分页组件
 filter          自定义过滤器
 global          自定义全局公共
-
-
-https://blog.csdn.net/yh869585771/article/details/79954432

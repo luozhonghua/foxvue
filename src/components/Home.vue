@@ -169,10 +169,13 @@
         })
       },
       switchTopMenu(item) {
-        console.info("top:"+JSON.stringify(item))
+        console.info("home top===="+JSON.stringify(item)+"\n\nitem.child===="+JSON.stringify(item.child)+"\n\nitem.url===="+JSON.stringify(item.url))
+        // console.info("router push url2:"+item.child[0].child[0].url)
         if (!item.child) {
+          console.info("router push url1:"+item.url)
           router.push(item.url)
         } else {
+          console.info("router push url2:"+item.child[0].child[0].url)
           router.push(item.child[0].child[0].url)
         }
       },
@@ -219,9 +222,12 @@
       this.menu = this.$route.meta.menu
       this.module = this.$route.meta.module
       this.topMenu = menus
+        console.info("menus==> topMenu:"+_g.j2s(this.topMenu))
       _(menus).forEach((res) => {
+        console.info("res module:"+_g.j2s(res.module)+"\nthis.module:"+_g.j2s(this.module))
         if (res.module == this.module) {
           this.menuData = res.child
+          console.info("menuData:"+this.menuData)
           res.selected = true
         } else {
           res.selected = false
@@ -234,6 +240,7 @@
       },
       showLeftMenu() {
         this.hasChildMenu = store.state.showLeftMenu
+        console.info("hasChildMenu:"+this.hasChildMenu)
         return store.state.showLeftMenu
       }
     },
