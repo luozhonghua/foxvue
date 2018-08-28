@@ -25,8 +25,9 @@ import usersEdit from './components/Administrative/personnel/users/edit.vue'
 import menuListTest from './components/stbom/system/menu/list.vue'
 import usersListTest from './components/stbom/personnel/users/list.vue'
 import xxx from './components/stbom/project/xxx/list.vue'
- 
- 
+
+import xxse from './components/Administrative/xxx/xx/list.vue'
+
 
 
 /**
@@ -120,6 +121,13 @@ const routes = [
       { path: 'users/test', component: testuser, name: 'testuser', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }},
       { path: 'users/add', component: usersAdd, name: 'usersAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }},
       { path: 'users/edit/:id', component: usersEdit, name: 'usersEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: 'xx/list', component: xxse, name: 'xxse', meta: { hideLeft: false, module: 'Administrative', menu: 'xx' }}
     ]
   },
   {
