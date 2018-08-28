@@ -18,8 +18,17 @@ import groupsList from './components/Administrative/structures/groups/list.vue'
 import groupsAdd from './components/Administrative/structures/groups/add.vue'
 import groupsEdit from './components/Administrative/structures/groups/edit.vue'
 import usersList from './components/Administrative/personnel/users/list.vue'
+import testuser from './components/Administrative/personnel/users/test.vue'
 import usersAdd from './components/Administrative/personnel/users/add.vue'
 import usersEdit from './components/Administrative/personnel/users/edit.vue'
+
+import menuListTest from './components/stbom/system/menu/list.vue'
+import usersListTest from './components/stbom/personnel/users/list.vue'
+import xxx from './components/stbom/project/xxx/list.vue'
+ 
+ 
+
+
 /**
  * import Dashboard from './components/Dashboard'
  * meta参数解析
@@ -108,8 +117,30 @@ const routes = [
     component: Home,
     children: [
       { path: 'users/list', component: usersList, name: 'usersList', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }},
+      { path: 'users/test', component: testuser, name: 'testuser', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }},
       { path: 'users/add', component: usersAdd, name: 'usersAdd', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }},
       { path: 'users/edit/:id', component: usersEdit, name: 'usersEdit', meta: { hideLeft: false, module: 'Administrative', menu: 'users' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: 'menu/list', component: menuListTest, name: 'menuListTest', meta: { hideLeft: false, module: 'stbom', menu: 'menu' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: 'users/list', component: usersListTest, name: 'usersListTest', meta: { hideLeft: false, module: 'stbom', menu: 'users' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: 'xxx/list', component: xxx, name: 'xxx', meta: { hideLeft: false, module: 'stbom', menu: 'xxx' }}
     ]
   }
 ]
