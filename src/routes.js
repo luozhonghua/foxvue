@@ -28,6 +28,7 @@ import xxx from './components/stbom/project/xxx/list.vue'
 
 import xxse from './components/Administrative/xxx/xx/list.vue'
 
+import acc from './components/stbom/receivable/accounting/list.vue'
 
 
 /**
@@ -149,6 +150,13 @@ const routes = [
     component: Home,
     children: [
       { path: 'xxx/list', component: xxx, name: 'xxx', meta: { hideLeft: false, module: 'stbom', menu: 'xxx' }}
+    ]
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      { path: 'accounting/list', component: acc, name: 'acc', meta: { hideLeft: false, module: 'stbom', menu: 'accounting' }}
     ]
   }
 ]
