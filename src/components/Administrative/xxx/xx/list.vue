@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="m-b-20">
-  	  看看我们的区别~~
+  	  
 		</div>
 		
 		<el-table
@@ -46,31 +46,10 @@
 				</div>
 			</el-table-column>
 
-			<el-table-column
-			label="操作"
-			inline-template
-			width="200">
-				<div>
-					<span>
-						<router-link :to="{ name: 'menuEdit', params: { id: row.id }}" class="btn-link edit-btn">
-						编辑
-						</router-link>
-					</span>
-					<span>
-						<el-button
-						size="small"
-						type="danger"
-						@click="confirmDelete(row)">
-						删除
-						</el-button>
-					</span>
-				</div>
-			</el-table-column>
+		 
 
 		</el-table>
-		<div class="pos-rel p-t-20">
-			<btnGroup :selectedData="multipleSelection" :type="'menus'"></btnGroup>
-		</div>
+	 
 	</div>
 </template>
 
@@ -112,15 +91,9 @@
     },
     created() {
       this.apiGet('admin/menus').then((res) => {
-				 console.info("-----res:"+JSON.stringify(res))
 
         this.handelResponse(res, (data) => {
-				 
-					this.tableData = data
-					 
-					
-					  
-				 //console.info("-----data:"+JSON.stringify(this.tableData))
+			 
         })
       })
     },

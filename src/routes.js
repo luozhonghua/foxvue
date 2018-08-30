@@ -22,9 +22,9 @@ import testuser from './components/Administrative/personnel/users/test.vue'
 import usersAdd from './components/Administrative/personnel/users/add.vue'
 import usersEdit from './components/Administrative/personnel/users/edit.vue'
 
-import menuListTest from './components/stbom/system/menu/list.vue'
-import usersListTest from './components/stbom/personnel/users/list.vue'
-import xxx from './components/stbom/project/xxx/list.vue'
+//import menuListTest from './components/stbom/system/menu/list.vue'
+//import usersListTest from './components/stbom/personnel/users/list.vue'
+//import xxx from './components/stbom/project/xxx/list.vue'
 
 import xxse from './components/Administrative/xxx/xx/list.vue'
 
@@ -131,27 +131,27 @@ const routes = [
       { path: 'xx/list', component: xxse, name: 'xxse', meta: { hideLeft: false, module: 'Administrative', menu: 'xx' }}
     ]
   },
-  {
-    path: '/home',
-    component: Home,
-    children: [
-      { path: 'menu/list', component: menuListTest, name: 'menuListTest', meta: { hideLeft: false, module: 'stbom', menu: 'menu' }}
-    ]
-  },
-  {
-    path: '/home',
-    component: Home,
-    children: [
-      { path: 'users/list', component: usersListTest, name: 'usersListTest', meta: { hideLeft: false, module: 'stbom', menu: 'users' }}
-    ]
-  },
-  {
-    path: '/home',
-    component: Home,
-    children: [
-      { path: 'xxx/list', component: xxx, name: 'xxx', meta: { hideLeft: false, module: 'stbom', menu: 'xxx' }}
-    ]
-  },
+  // {
+  //   path: '/home',
+  //   component: Home,
+  //   children: [
+  //     { path: 'menu/list', component: menuListTest, name: 'menuListTest', meta: { hideLeft: false, module: 'stbom', menu: 'menu' }}
+  //   ]
+  // },
+  // {
+  //   path: '/home',
+  //   component: Home,
+  //   children: [
+  //     { path: 'users/list', component: usersListTest, name: 'usersListTest', meta: { hideLeft: false, module: 'stbom', menu: 'users' }}
+  //   ]
+  // },
+  // {
+  //   path: '/home',
+  //   component: Home,
+  //   children: [
+  //     { path: 'xxx/list', component: xxx, name: 'xxx', meta: { hideLeft: false, module: 'stbom', menu: 'xxx' }}
+  //   ]
+  // },
   {
     path: '/home',
     component: Home,

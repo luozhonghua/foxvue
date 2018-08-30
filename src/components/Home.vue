@@ -222,7 +222,7 @@
       this.menu = this.$route.meta.menu
       this.module = this.$route.meta.module
       this.topMenu = menus
-        console.info("menus==> topMenu:"+_g.j2s(this.topMenu))
+       // console.info("menus==> topMenu:"+_g.j2s(this.topMenu))
       _(menus).forEach((res) => {
         console.info("res module:"+_g.j2s(res.module)+"\nthis.module:"+_g.j2s(this.module))
         if (res.module == this.module) {
